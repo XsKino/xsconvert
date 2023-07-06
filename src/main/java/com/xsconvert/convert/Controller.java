@@ -10,7 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.w3c.dom.events.MouseEvent;
 
@@ -33,6 +36,12 @@ public class Controller implements Initializable {
 
     @FXML
     private AnchorPane titleBar;
+
+    @FXML
+    private ImageView iconImg;
+
+    @FXML
+    private Text titleText;
 
     @FXML
     protected void closeStage(ActionEvent event) {
@@ -69,5 +78,8 @@ public class Controller implements Initializable {
                 getEventStage(pressEvent).setY(dragEvent.getScreenY() - pressEvent.getSceneY());
             });
         });
+
+        iconImg.setImage(App.getPrimaryStage().getIcons().get(0));
+        titleText.setText(App.getPrimaryStage().getTitle());
     }
 }

@@ -26,3 +26,23 @@
 .text-foreground {
     -fx-color: #EDEDED;
 }
+
+.exit-btn, .min-btn, .max-btn {
+    -fx-background-color: rgba(0, 0, 0, 0);
+}
+
+.exit-btn:hover {
+    -fx-background-color: #FF0055;
+}
+
+.exit-btn:pressed {
+    -fx-background-color: #CC0022;
+}
+
+.min-btn:hover, .max-btn:hover {
+    -fx-background-color: #FFFFFF35;
+}
+
+.min-btn:pressed, .max-btn:pressed {
+    -fx-background-color: #FFFFFF15;
+}

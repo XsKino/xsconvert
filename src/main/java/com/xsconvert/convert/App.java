@@ -11,19 +11,20 @@ import javafx.stage.StageStyle;
 
 public class App extends Application {
 
+    public static Stage primaryStage;
 
 
     @Override
     public void start(Stage stage) throws Exception {
 
+        primaryStage = stage;
+        stage.setTitle("XSConvert | Convierte Divisas");
+        stage.getIcons().add(new Image("file:src/main/resources/img/icon.png"));
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         Scene scene = new Scene(root, Color.TRANSPARENT);
         stage.initStyle(StageStyle.TRANSPARENT);
 
 
-        Image icon = new Image("file:src/main/resources/img/icon.png");
-        stage.setTitle("XSConvert");
-        stage.getIcons().add(icon);
 
         stage.setScene(scene);
         stage.show();
@@ -32,6 +33,10 @@ public class App extends Application {
     public static void main(String[] args) {
 
         launch(args);
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
 }
