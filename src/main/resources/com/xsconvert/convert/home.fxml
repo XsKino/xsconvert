@@ -4,12 +4,16 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
 <Pane prefHeight="514.0" prefWidth="731.0" style="-fx-background-color: rgba(0,0,0,0);" styleClass="root-pane" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xsconvert.convert.Controller">
    <children>
@@ -53,7 +57,113 @@
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text fill="#ededed" layoutX="36.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="De">
+                     <font>
+                        <Font name="Leelawadee UI" size="36.0" />
+                     </font>
+                  </Text>
+                  <BorderPane layoutX="35.0" layoutY="102.0" styleClass="gradientWrapper">
+                     <center>
+                        <TextField fx:id="fromAmount" prefHeight="80.0" prefWidth="427.0" promptText="0.00" style="-fx-background-radius: 15 0 0 15;" styleClass="amountInput" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Leelawadee UI" size="36.0" />
+                           </font>
+                        </TextField>
+                     </center>
+                     <right>
+                        <TextFlow prefHeight="80.0" prefWidth="117.0" style="-fx-background-radius: 0 15 15 0;" styleClass="amountDisplay" textAlignment="RIGHT" BorderPane.alignment="CENTER">
+                           <children>
+                              <Text fx:id="fromCurrCode" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="USD" textAlignment="RIGHT" wrappingWidth="190.099609375">
+                                 <font>
+                                    <Font name="Leelawadee UI" size="36.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets bottom="16.0" left="20.0" right="16.0" top="16.0" />
+                           </padding>
+                        </TextFlow>
+                     </right>
+                  </BorderPane>
+                  <TextFlow layoutX="35.0" layoutY="274.0" prefHeight="80.0" prefWidth="459.0" style="-fx-border-radius: 15 0 0 15;" styleClass="amountDisplay">
+                     <children>
+                        <Text fx:id="toAmount" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="66.41015625">
+                           <font>
+                              <Font name="Leelawadee UI" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="16.0" left="20.0" right="16.0" top="16.0" />
+                     </padding>
+                  </TextFlow>
+                  <Text fill="#ededed" layoutX="35.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A">
+                     <font>
+                        <Font name="Leelawadee UI" size="36.0" />
+                     </font>
+                  </Text>
+                  <TextFlow layoutX="466.0" layoutY="274.0" prefHeight="80.0" prefWidth="117.0" style="-fx-background-radius: 0 15 15 0;" styleClass="amountDisplay" textAlignment="RIGHT">
+                     <children>
+                        <Text fx:id="toCurrCode" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="MXN" textAlignment="RIGHT" wrappingWidth="190.099609375">
+                           <font>
+                              <Font name="Leelawadee UI" size="36.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets bottom="16.0" left="20.0" right="16.0" top="16.0" />
+                     </padding>
+                  </TextFlow>
+                  <BorderPane layoutX="90.0" layoutY="46.0" prefHeight="48.0" prefWidth="493.0" style="-fx-background-radius: 10;" styleClass="gradientWrapper">
+                     <center>
+                        <SplitMenuButton fx:id="fromCurrSelect" mnemonicParsing="false" onAction="#handleFromCurrSelect" prefHeight="103.0" prefWidth="489.0" styleClass="currencySelect" text="SplitMenuButton" BorderPane.alignment="CENTER">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                           <font>
+                              <Font name="Leelawadee UI" size="18.0" />
+                           </font>
+                        </SplitMenuButton>
+                     </center>
+                  </BorderPane>
+                  <TextFlow layoutX="47.0" layoutY="378.0" prefHeight="26.0" prefWidth="537.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1 ">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="fromCurrCodeDisplay" strokeType="OUTSIDE" strokeWidth="0.0" text="USD">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" = ">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="17.02">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" ">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="toCurrCodeDisplay" strokeType="OUTSIDE" strokeWidth="0.0" text="MXN">
+                           <font>
+                              <Font name="Leelawadee UI" size="24.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </TextFlow>
+               </children></AnchorPane>
          </center>
          <opaqueInsets>
             <Insets />

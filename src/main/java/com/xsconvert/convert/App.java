@@ -18,7 +18,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
 
         primaryStage = stage;
-        stage.setTitle("XSConvert | Convierte Divisas");
+        stage.setTitle("XSConvert > Conversor de monedas");
         stage.getIcons().add(new Image("file:src/main/resources/img/icon.png"));
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
         Scene scene = new Scene(root, Color.TRANSPARENT);

@@ -1,12 +1,19 @@
 /*
     #97D8EC - PRIMARY
     #74BBCA - SECONDARY
-    #082032 - BG-1
+    #283344 - BG-1
     #283344 - BG-2
+    #142132 - BG-3
     #EDEDED - FOREGROUND
 */
+
+* {
+    -fx-fill: #EDEDED;
+    -fx-text-fill: #EDEDED;
+}
+
 .root-pane {
-    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-background-color: transparent;
     -fx-padding: 24;
 }
 
@@ -23,12 +30,8 @@
     -fx-background-color: #283344;
 }
 
-.text-foreground {
-    -fx-color: #EDEDED;
-}
-
 .exit-btn, .min-btn, .max-btn {
-    -fx-background-color: rgba(0, 0, 0, 0);
+    -fx-background-color: transparent;
 }
 
 .exit-btn:hover {
@@ -45,4 +48,46 @@
 
 .min-btn:pressed, .max-btn:pressed {
     -fx-background-color: #FFFFFF15;
+}
+
+.amountInput, .amountDisplay {
+    -fx-background-color: #0c1c2a;
+    -fx-background-radius: 15;
+}
+
+.gradientWrapper {
+    -fx-background-color: linear-gradient(from 0 0 to 500 300 , rgba(151,216,236,1) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 46%, rgba(151,216,236,1) 100%);
+    -fx-background-radius: 15;
+    -fx-padding: 2;
+}
+
+.gradientWrapper:hover {
+    -fx-background-color: #97D8EC;
+    -fx-effect: dropshadow(three-pass-box, #97D8EC43, 12, 0.5, 0, 0);
+}
+
+.currencySelect {
+    -fx-background-color: #0c1c2a;
+    -fx-background-radius: 10;
+}
+
+.currencySelect .arrow-button, .currencySelect .label {
+    -fx-background-color: transparent ;
+}
+
+.currencySelect .context-menu {
+    -fx-background-color: #0c1c2a;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(2, 2, 4, 0.45), 10, 0.5, 0, 0);
+    -fx-padding: 10 0;
+    -fx-min-width: 389;
+}
+
+.currencySelect .context-menu .menu-item {
+    -fx-font: 18px "Leelwade UI";
+    -fx-padding: 1 10
+}
+
+.currencySelect .context-menu .menu-item:focused {
+    -fx-background-color: #fff2;
 }
