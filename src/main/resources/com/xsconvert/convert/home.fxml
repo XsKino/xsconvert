@@ -59,11 +59,6 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-padding: 20;" BorderPane.alignment="CENTER">
                <children>
-                  <Text fill="#ededed" layoutX="36.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="De">
-                     <font>
-                        <Font name="Leelawadee UI" size="36.0" />
-                     </font>
-                  </Text>
                   <BorderPane layoutX="35.0" layoutY="102.0" styleClass="gradientWrapper">
                      <center>
                         <TextField fx:id="fromAmount" prefHeight="80.0" prefWidth="387.0" promptText="0.00" style="-fx-background-radius: 15 0 0 15;" styleClass="amountInput" BorderPane.alignment="CENTER">
@@ -99,11 +94,6 @@
                         <Insets bottom="16.0" left="20.0" right="16.0" top="16.0" />
                      </padding>
                   </TextFlow>
-                  <Text fill="#ededed" layoutX="35.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A">
-                     <font>
-                        <Font name="Leelawadee UI" size="36.0" />
-                     </font>
-                  </Text>
                   <TextFlow layoutX="431.0" layoutY="274.0" prefHeight="80.0" prefWidth="152.0" style="-fx-background-radius: 0 15 15 0;" styleClass="amountDisplay" textAlignment="RIGHT">
                      <children>
                         <Text fx:id="toCurrCode" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="MXN" textAlignment="RIGHT" wrappingWidth="190.099609375">
@@ -118,7 +108,7 @@
                   </TextFlow>
                   <BorderPane layoutX="90.0" layoutY="46.0" prefHeight="48.0" prefWidth="493.0" style="-fx-background-radius: 10;" styleClass="gradientWrapper">
                      <center>
-                        <SplitMenuButton fx:id="fromCurrSelect" mnemonicParsing="false" onAction="#handleFromCurrSelect" prefHeight="103.0" prefWidth="489.0" styleClass="currencySelect" text="SplitMenuButton" BorderPane.alignment="CENTER">
+                        <SplitMenuButton fx:id="fromCurrSelect" mnemonicParsing="false" onAction="#handleClickSelect" prefHeight="103.0" prefWidth="489.0" styleClass="currencySelect" text="SplitMenuButton" BorderPane.alignment="CENTER">
                           <items>
                             <MenuItem mnemonicParsing="false" text="Action 1" />
                             <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -129,7 +119,20 @@
                         </SplitMenuButton>
                      </center>
                   </BorderPane>
-                  <TextFlow layoutX="47.0" layoutY="378.0" prefHeight="26.0" prefWidth="537.0">
+                  <BorderPane layoutX="90.0" layoutY="221.0" prefHeight="48.0" prefWidth="493.0" style="-fx-background-radius: 10;" styleClass="gradientWrapper">
+                     <center>
+                        <SplitMenuButton fx:id="toCurrSelect" mnemonicParsing="false" onAction="#handleClickSelect" prefHeight="103.0" prefWidth="489.0" styleClass="currencySelect" text="SplitMenuButton" BorderPane.alignment="CENTER">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                           </items>
+                           <font>
+                              <Font name="Consolas" size="18.0" />
+                           </font>
+                        </SplitMenuButton>
+                     </center>
+                  </BorderPane>
+                  <TextFlow layoutX="47.0" layoutY="378.0" prefHeight="32.0" prefWidth="382.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1 ">
                            <font>
@@ -163,6 +166,15 @@
                         </Text>
                      </children>
                   </TextFlow>
+                  <BorderPane layoutX="440.0" layoutY="365.0" styleClass="gradientWrapper">
+                     <center>
+                        <Button fx:id="convertButton" mnemonicParsing="false" prefHeight="42.0" prefWidth="140.0" styleClass="convertButton" text="Convertir">
+                           <font>
+                              <Font name="Leelawadee UI" size="18.0" />
+                           </font>
+                        </Button>
+                     </center>
+                  </BorderPane>
                </children></AnchorPane>
          </center>
          <opaqueInsets>

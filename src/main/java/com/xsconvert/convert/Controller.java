@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
@@ -15,13 +16,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -29,8 +27,6 @@ public class Controller implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
-    private double x = 0, y = 0;
 
     private Stage getEventStage(Event event) {
         return (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -50,6 +46,9 @@ public class Controller implements Initializable {
 
     @FXML
     private SplitMenuButton fromCurrSelect, toCurrSelect;
+
+    @FXML
+    private Button convertButton;
 
     @FXML
     protected void closeStage(ActionEvent event) {
@@ -79,15 +78,14 @@ public class Controller implements Initializable {
         SplitMenuButton select = (SplitMenuButton)e.getSource();
         if(!select.isShowing()) {
             select.show();
+            System.out.println("Showing " + select.getItems().size() + " items");
         }
     }
 
     @FXML
-    protected void handleFromCurrSelect(ActionEvent e) {
-        SplitMenuButton select = (SplitMenuButton)e.getSource();
+    protected void handleClickSelect(ActionEvent e) {
         toggleSplitMenuButton(e);
     }
-
 
     private static double xOffset = 0;
     private static double yOffset = 0;
@@ -96,7 +94,10 @@ public class Controller implements Initializable {
         for(Currency currency : Currency.getAvailCurrencies()) {
             MenuItem item = new MenuItem(currency.getCode()+ " | " + currency.getName());
             fromCurrSelect.getItems().add(item);
+            toCurrSelect.getItems().add(item);
         }
+        fromCurrSelect.setText(new Currency("USD").getName());
+        toCurrSelect.setText(new Currency("MXN").getName());
     }
 
     @Override
@@ -115,6 +116,7 @@ public class Controller implements Initializable {
         fromAmount.setText("");
 
         fromCurrSelect.getItems().removeAll(fromCurrSelect.getItems());
+        toCurrSelect.getItems().removeAll(toCurrSelect.getItems());
         populateMenuItems();
 
         for(MenuItem item : fromCurrSelect.getItems()) {
@@ -127,6 +129,20 @@ public class Controller implements Initializable {
                 fromCurrSelect.setText(name);
             });
         }
+
+        for(MenuItem item : toCurrSelect.getItems()) {
+            item.setOnAction(e -> {
+                String[] splitText = item.getText().split(" ");
+                String code = splitText[0];
+                String name = String.join(" ", Arrays.copyOfRange(splitText, 2, splitText.length));
+                toCurrCode.setText(code);
+                toCurrCodeDisplay.setText(code);
+                toCurrSelect.setText(name);
+            });
+        }
+
+        fromCurrSelect.setOnContextMenuRequested(e -> System.out.println("context menu requested on fromCurrSelect"));
+        toCurrSelect.setOnContextMenuRequested(e -> System.out.println("context menu requested on toCurrSelect"));
 
     }
 }

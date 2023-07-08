@@ -12,6 +12,11 @@
     -fx-text-fill: #EDEDED;
 }
 
+.text-secondary {
+    -fx-fill: #97D8EC;
+    -fx-text-fill: #97D8EC;
+}
+
 .root-pane {
     -fx-background-color: transparent;
     -fx-padding: 24;
@@ -91,4 +96,13 @@
 
 .currencySelect .context-menu .menu-item:focused {
     -fx-background-color: #fff2;
+}
+
+.convertButton {
+    -fx-background-color: #0c1c2a;
+    -fx-background-radius: 15;
+}
+
+.convertButton:focused {
+    -fx-background-color: red;
 }
