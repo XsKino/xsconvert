@@ -30,10 +30,6 @@ public class Controller implements Initializable {
     private Scene scene;
     private Parent root;
 
-    MenuItem MXN = new MenuItem("MXN");
-    MenuItem USD = new MenuItem("USD");
-    MenuItem EUR = new MenuItem("EUR");
-
     private double x = 0, y = 0;
 
     private Stage getEventStage(Event event) {
@@ -90,11 +86,18 @@ public class Controller implements Initializable {
     protected void handleFromCurrSelect(ActionEvent e) {
         SplitMenuButton select = (SplitMenuButton)e.getSource();
         toggleSplitMenuButton(e);
-        System.out.println("fromCurrSelect clicked!");
     }
+
 
     private static double xOffset = 0;
     private static double yOffset = 0;
+
+    private void populateMenuItems() {
+        for(Currency currency : Currency.getAvailCurrencies()) {
+            MenuItem item = new MenuItem(currency.getCode()+ " | " + currency.getName());
+            fromCurrSelect.getItems().add(item);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -112,14 +115,16 @@ public class Controller implements Initializable {
         fromAmount.setText("");
 
         fromCurrSelect.getItems().removeAll(fromCurrSelect.getItems());
-        fromCurrSelect.getItems().addAll(MXN, USD, EUR);
+        populateMenuItems();
 
         for(MenuItem item : fromCurrSelect.getItems()) {
             item.setOnAction(e -> {
-                String code = item.getText();
+                String[] splitText = item.getText().split(" ");
+                String code = splitText[0];
+                String name = String.join(" ", Arrays.copyOfRange(splitText, 2, splitText.length));
                 fromCurrCode.setText(code);
                 fromCurrCodeDisplay.setText(code);
-                fromCurrSelect.setText(code);
+                fromCurrSelect.setText(name);
             });
         }
 

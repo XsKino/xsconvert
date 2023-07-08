@@ -66,14 +66,14 @@
                   </Text>
                   <BorderPane layoutX="35.0" layoutY="102.0" styleClass="gradientWrapper">
                      <center>
-                        <TextField fx:id="fromAmount" prefHeight="80.0" prefWidth="427.0" promptText="0.00" style="-fx-background-radius: 15 0 0 15;" styleClass="amountInput" BorderPane.alignment="CENTER">
+                        <TextField fx:id="fromAmount" prefHeight="80.0" prefWidth="387.0" promptText="0.00" style="-fx-background-radius: 15 0 0 15;" styleClass="amountInput" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Leelawadee UI" size="36.0" />
                            </font>
                         </TextField>
                      </center>
                      <right>
-                        <TextFlow prefHeight="80.0" prefWidth="117.0" style="-fx-background-radius: 0 15 15 0;" styleClass="amountDisplay" textAlignment="RIGHT" BorderPane.alignment="CENTER">
+                        <TextFlow prefHeight="80.0" prefWidth="154.0" style="-fx-background-radius: 0 15 15 0;" styleClass="amountDisplay" textAlignment="RIGHT" BorderPane.alignment="CENTER">
                            <children>
                               <Text fx:id="fromCurrCode" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="USD" textAlignment="RIGHT" wrappingWidth="190.099609375">
                                  <font>
@@ -87,7 +87,7 @@
                         </TextFlow>
                      </right>
                   </BorderPane>
-                  <TextFlow layoutX="35.0" layoutY="274.0" prefHeight="80.0" prefWidth="459.0" style="-fx-border-radius: 15 0 0 15;" styleClass="amountDisplay">
+                  <TextFlow layoutX="35.0" layoutY="274.0" prefHeight="80.0" prefWidth="421.0" style="-fx-border-radius: 15 0 0 15;" styleClass="amountDisplay">
                      <children>
                         <Text fx:id="toAmount" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="66.41015625">
                            <font>
@@ -104,7 +104,7 @@
                         <Font name="Leelawadee UI" size="36.0" />
                      </font>
                   </Text>
-                  <TextFlow layoutX="466.0" layoutY="274.0" prefHeight="80.0" prefWidth="117.0" style="-fx-background-radius: 0 15 15 0;" styleClass="amountDisplay" textAlignment="RIGHT">
+                  <TextFlow layoutX="431.0" layoutY="274.0" prefHeight="80.0" prefWidth="152.0" style="-fx-background-radius: 0 15 15 0;" styleClass="amountDisplay" textAlignment="RIGHT">
                      <children>
                         <Text fx:id="toCurrCode" opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="MXN" textAlignment="RIGHT" wrappingWidth="190.099609375">
                            <font>
@@ -124,7 +124,7 @@
                             <MenuItem mnemonicParsing="false" text="Action 2" />
                           </items>
                            <font>
-                              <Font name="Leelawadee UI" size="18.0" />
+                              <Font name="Consolas" size="18.0" />
                            </font>
                         </SplitMenuButton>
                      </center>

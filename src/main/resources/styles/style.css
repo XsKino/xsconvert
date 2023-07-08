@@ -81,10 +81,11 @@
     -fx-effect: dropshadow(three-pass-box, rgba(2, 2, 4, 0.45), 10, 0.5, 0, 0);
     -fx-padding: 10 0;
     -fx-min-width: 389;
+    -fx-max-height: 940;
 }
 
 .currencySelect .context-menu .menu-item {
-    -fx-font: 18px "Leelwade UI";
+    -fx-font: 18px "Consolas";
     -fx-padding: 1 10
 }
 
