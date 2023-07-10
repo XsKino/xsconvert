@@ -125,7 +125,7 @@
                               <Font name="Leelawadee UI" size="24.0" />
                            </font>
                         </Text>
-                        <Text fx:id="exhangeRate" strokeType="OUTSIDE" strokeWidth="0.0" text="17.1364">
+                        <Text fx:id="exhangeRate" strokeType="OUTSIDE" strokeWidth="0.0" text="?">
                            <font>
                               <Font name="Leelawadee UI" size="24.0" />
                            </font>

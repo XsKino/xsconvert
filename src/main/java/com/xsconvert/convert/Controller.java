@@ -157,6 +157,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        changeRateText(0);
         titleBar.setOnMousePressed(pressEvent -> {
             titleBar.setOnMouseDragged(dragEvent -> {
                 getEventStage(pressEvent).setX(dragEvent.getScreenX() - pressEvent.getSceneX());
