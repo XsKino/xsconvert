@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/XsKino/xsconvert">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="product-img/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">XSConvert</h3>
