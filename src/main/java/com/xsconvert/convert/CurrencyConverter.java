@@ -17,14 +17,9 @@ public class CurrencyConverter {
     public static void convert(Currency curr1, Currency curr2) {
         String url = "https://currency-converter5.p.rapidapi.com/currency/convert?format=xml&from="+ curr1.getCode() +"&to="+ curr2.getCode() +"&amount="+ curr1.getAmount() +"&language=es";
         String apiHost = "currency-converter5.p.rapidapi.com";
+        String apiKey = System.getenv("API_KEY");
 
-        Properties properties = new Properties();
-
-        try (InputStream input = new FileInputStream(".idea/libraries/config.properties")){
-
-            properties.load(input);
-            String apiKey = properties.getProperty("api.key");
-
+        try {
             // Crear la conexión
             URL apiUrl = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();

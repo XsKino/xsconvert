@@ -87,14 +87,17 @@ public class Controller implements Initializable {
         toggleSplitMenuButton(e);
     }
 
+    private void toggleConvertButton(boolean enabled) {
+        convertButton.setDisable(!enabled);
+        convertButton.getParent().setStyle("-fx-opacity: "+ (enabled ? "1" : "0"));
+    }
+
     @FXML
     protected void handleFromAmountChange(Event e) {
         if(((TextField) e.getSource()).getText().length() > 0) {
-            convertButton.setDisable(false);
-            convertButton.getParent().setStyle("-fx-opacity: 1");
+            toggleConvertButton(true);
         } else {
-            convertButton.setDisable(true);
-            convertButton.getParent().setStyle("-fx-opacity: 0");
+            toggleConvertButton(false);
         }
         changeToAmountStyle(false);
     }
@@ -103,6 +106,7 @@ public class Controller implements Initializable {
     protected void handleCurrChange(Event e) {
         changeToAmountStyle(false);
         changeRateText(0);
+        toggleConvertButton(true);
     }
 
     @FXML
@@ -113,8 +117,7 @@ public class Controller implements Initializable {
         try {
             CurrencyConverter.convert(curr1, curr2);
             changeToAmountStyle(true);
-            convertButton.setDisable(true);
-            convertButton.getParent().setStyle("-fx-opacity: 0");
+            toggleConvertButton(false);
             changeRateText(curr2.getRate());
             toAmount.setText(String.valueOf(curr2.getAmount()));
 
