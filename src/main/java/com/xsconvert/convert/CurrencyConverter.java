@@ -13,9 +13,11 @@ import java.net.URL;
 public class CurrencyConverter {
 
     public static void convert(Currency curr1, Currency curr2) {
-        String url = "https://currency-converter5.p.rapidapi.com/currency/convert?format=xml&from="+ curr1.getCode() +"&to="+ curr2.getCode() +"&amount="+ curr2.getAmount() +"&language=es";
-        String apiKey = "4756562718msh50ebc8e0aae730ap1e5502jsna59f285ac952";
+        String url = "https://currency-converter5.p.rapidapi.com/currency/convert?format=xml&from="+ curr1.getCode() +"&to="+ curr2.getCode() +"&amount="+ curr1.getAmount() +"&language=es";
+        String apiKey = "4bee897f32msh9fc125d083045c2p149196jsn3ef6c2577be5";
         String apiHost = "currency-converter5.p.rapidapi.com";
+
+        System.out.println("URL: " + url);
 
         try {
             // Crear la conexión
@@ -36,17 +38,15 @@ public class CurrencyConverter {
             Document document = builder.parse(inputStream);
 
             // Obtener los elementos del XML
-            Element rootElement = document.getDocumentElement();
-            String baseCurrencyCode = rootElement.getAttribute("base_currency_code");
-            String baseCurrencyName = rootElement.getAttribute("base_currency_name");
-            String amount = rootElement.getAttribute("amount");
-            String updatedDate = rootElement.getAttribute("updated_date");
-            NodeList rateNodeList = rootElement.getElementsByTagName("rate");
-            Element mxnRateElement = (Element) rateNodeList.item(0);
-            String currencyName = mxnRateElement.getAttribute("currency_name");
-            String rate = mxnRateElement.getAttribute("rate");
-            String rateForAmount = mxnRateElement.getAttribute("rate_for_amount");
-            String status = rootElement.getAttribute("status");
+            Element root = document.getDocumentElement();
+            String baseCurrencyCode = getTextContent(root, "base_currency_code");
+            String baseCurrencyName = getTextContent(root, "base_currency_name");
+            String amount = getTextContent(root, "amount");
+            String updatedDate = getTextContent(root, "updated_date");
+            String currencyName = getTextContent(root, "currency_name");
+            String rate = getTextContent(root, "rate");
+            String rateForAmount = getTextContent(root, "rate_for_amount");
+            String status = getTextContent(root, "status");
 
             // Imprimir los datos procesados
             System.out.println("Base Currency Code: " + baseCurrencyCode);
@@ -58,8 +58,20 @@ public class CurrencyConverter {
             System.out.println("Rate for Amount: " + rateForAmount);
             System.out.println("Status: " + status);
 
+            curr2.setAmount(Double.parseDouble(!rateForAmount.equals("") ? rateForAmount : "0"));
+            curr2.setRate(Double.parseDouble(!rate.equals("") ? rate : "0"));
+
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    private static String getTextContent(Element element, String tagName) {
+        NodeList nodeList = element.getElementsByTagName(tagName);
+        if (nodeList != null && nodeList.getLength() > 0) {
+            return nodeList.item(0).getTextContent();
+        } else {
+            return "";
         }
     }
 }

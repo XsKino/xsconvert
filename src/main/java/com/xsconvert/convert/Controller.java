@@ -32,6 +32,7 @@ public class Controller implements Initializable {
         return (Stage) ((Node)event.getSource()).getScene().getWindow();
     }
 
+
     @FXML
     private AnchorPane titleBar;
 
@@ -39,10 +40,10 @@ public class Controller implements Initializable {
     private ImageView iconImg;
 
     @FXML
-    private Text titleText, toAmount, fromCurrCode, toCurrCode, exhangeRate, fromCurrCodeDisplay, toCurrCodeDisplay;
+    private Text titleText, fromCurrCode, toCurrCode, exhangeRate, fromCurrCodeDisplay, toCurrCodeDisplay;
 
     @FXML
-    private TextField fromAmount;
+    private TextField fromAmount, toAmount;
 
     @FXML
     private SplitMenuButton fromCurrSelect, toCurrSelect;
@@ -78,7 +79,6 @@ public class Controller implements Initializable {
         SplitMenuButton select = (SplitMenuButton)e.getSource();
         if(!select.isShowing()) {
             select.show();
-            System.out.println("Showing " + select.getItems().size() + " items");
         }
     }
 
@@ -87,14 +87,69 @@ public class Controller implements Initializable {
         toggleSplitMenuButton(e);
     }
 
+    @FXML
+    protected void handleFromAmountChange(Event e) {
+        if(((TextField) e.getSource()).getText().length() > 0) {
+            convertButton.setDisable(false);
+            convertButton.getParent().setStyle("-fx-opacity: 1");
+        } else {
+            convertButton.setDisable(true);
+            convertButton.getParent().setStyle("-fx-opacity: 0");
+        }
+        changeToAmountStyle(false);
+    }
+
+    @FXML
+    protected void handleCurrChange(Event e) {
+        changeToAmountStyle(false);
+        changeRateText(0);
+    }
+
+    @FXML
+    protected void handleConvert(ActionEvent e) {
+        Currency curr1 = new Currency(fromCurrCode.getText());
+        curr1.setAmount(Double.parseDouble(fromAmount.getText()));
+        Currency curr2 = new Currency(toCurrCode.getText());
+        try {
+            CurrencyConverter.convert(curr1, curr2);
+            changeToAmountStyle(true);
+            convertButton.setDisable(true);
+            convertButton.getParent().setStyle("-fx-opacity: 0");
+            changeRateText(curr2.getRate());
+            toAmount.setText(String.valueOf(curr2.getAmount()));
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    private void changeToAmountStyle(Boolean valid) {
+        if(valid) {
+            toAmount.getParent().setStyle("-fx-background-color: transparent");
+        } else {
+            toAmount.getParent().setStyle("-fx-background-color: linear-gradient(from 0 0 to 500 300 , rgba(158,16,64,1) 0%, rgba(0,0,0,0) 28%, rgba(0,0,0,0) 46%, rgba(158,16,64,1) 100%)");
+        }
+    }
+
+    private void changeRateText(double rate) {
+//        exhangeRate.setText(String.format("%.6f", rate));
+        if(rate > 0) {
+            exhangeRate.setText(String.valueOf(rate));
+            exhangeRate.setStyle("-fx-fill: #ededed");
+        } else {
+            exhangeRate.setText("?");
+            exhangeRate.setStyle("-fx-fill: #fffa");
+        }
+    }
+
     private static double xOffset = 0;
     private static double yOffset = 0;
 
     private void populateMenuItems() {
         for(Currency currency : Currency.getAvailCurrencies()) {
-            MenuItem item = new MenuItem(currency.getCode()+ " | " + currency.getName());
-            fromCurrSelect.getItems().add(item);
-            toCurrSelect.getItems().add(item);
+            String itemText = currency.getCode()+ " | " + currency.getName();
+            fromCurrSelect.getItems().add(new MenuItem(itemText));
+            toCurrSelect.getItems().add(new MenuItem(itemText));
         }
         fromCurrSelect.setText(new Currency("USD").getName());
         toCurrSelect.setText(new Currency("MXN").getName());
@@ -127,6 +182,7 @@ public class Controller implements Initializable {
                 fromCurrCode.setText(code);
                 fromCurrCodeDisplay.setText(code);
                 fromCurrSelect.setText(name);
+                handleCurrChange(e);
             });
         }
 
@@ -138,11 +194,8 @@ public class Controller implements Initializable {
                 toCurrCode.setText(code);
                 toCurrCodeDisplay.setText(code);
                 toCurrSelect.setText(name);
+                handleCurrChange(e);
             });
         }
-
-        fromCurrSelect.setOnContextMenuRequested(e -> System.out.println("context menu requested on fromCurrSelect"));
-        toCurrSelect.setOnContextMenuRequested(e -> System.out.println("context menu requested on toCurrSelect"));
-
     }
 }

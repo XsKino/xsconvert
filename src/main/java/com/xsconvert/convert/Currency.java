@@ -6,7 +6,7 @@ import java.util.Collections;
 public class Currency implements Comparable<Currency> {
 
     private String code, name;
-    private double rate, amount;
+    private double rate = 0, amount = 0;
 
     public Currency(String code, String name) {
         this.code = code;
