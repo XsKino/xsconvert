@@ -3,44 +3,43 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/XsKino/xsconvert">
-    <img src="product-img/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">XSConvert</h3>
+  <h1 align="center">XSConvert</h1>
+  <br/>
+    <a href="https://github.com/XsKino/xsconvert">
+      <img src="product-img/logo.png" alt="Logo" width="180" height="180">
+    </a>
+  <br/>
 
 <!-- ABOUT THE PROJECT -->
-## Acerca del proyecto
+# Acerca del proyecto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="product-img/showcase.gif" alt="showcase" height="514">
 
-XSConvert es una aplicación para convertir monedas de manera rápida y sencilla, soportando la mayoría de divisas en el mundo.
-
+### XSConvert es una aplicación para convertir monedas de manera rápida y sencilla, soportando la mayoría de divisas en el mundo.
 Desarrollado con JavaFX
 
+
+
 <!-- GETTING STARTED -->
-## Uso de la aplicación
+# Uso de la aplicación
 
-  <img src="product-img/step-1.jpg" alt="Logo" style="width:30em;">
+<img align="left" src="product-img/step-4.jpg" alt="Logo" width="340px">
+
+<div align="left">
   
-  La aplicación cuenta con un campo de tecto para ingresar la cantidad de dinero a convertir, un campo para seleccionar la divisa base, y otro para seleccionar la divisa de destino.
+  ### XSConvert permite convertir una cantidad de cualquier divisa a otra.
 
-  <img src="product-img/step-2.jpg" alt="Logo" style="width:30em;">
+  ### Selecciona la moneda base y la moneda de destino, ingresa la cantidad, y pulsa el botón "convertir", el resultado de la conversión se mostrará en la caja de texto inferior.
 
-  <img src="product-img/step-3.jpg" alt="Logo" style="width:30em;">
+  ### Adicionalmente, se muestra la tasa de conversión entre las dos divisas una vez realizada la conversión.
 
-  Ingresa un valor para convertir y pulsa el botón.
+  ### La aplicación utiliza la API de [Currency Converter](https://rapidapi.com/natkapral/api/currency-converter5).
 
-  <img src="product-img/step-4.jpg" alt="Logo" style="width:30em;">
-
-  Con la mayoría de monedas en el mundo disponibles.
-
-  <img src="product-img/step-5.jpg" alt="Logo" style="width:30em;">
-
-  Obtén la tasa de conversión entre dos divisas.
+</div>
+  
 
 <!-- CONTACT -->
-## Contacto
+# Contacto
 
 Andrés Piñón - [@AndresPrza](https://twitter.com/AndresPrza) - andresprza@gmail.com
 
@@ -53,4 +52,3 @@ Andrés Piñón - [@AndresPrza](https://twitter.com/AndresPrza) - andresprza@gma
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/andresprza
-[product-screenshot]: product-img/main.jpg
