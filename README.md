@@ -23,7 +23,7 @@ Desarrollado con JavaFX
 <!-- GETTING STARTED -->
 # Uso de la aplicación
 
-<img align="left" src="product-img/step-4.jpg" alt="Logo" width="368px">
+<img align="left" src="product-img/step-4.jpg" alt="Logo" width="420px">
 
 <div align="left">
   
