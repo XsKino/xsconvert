@@ -14,7 +14,7 @@ import java.util.Properties;
 
 public class CurrencyConverter {
 
-    public static void convert(Currency curr1, Currency curr2) {
+    public static void convert(Currency curr1, Currency curr2) throws Exception {
         String url = "https://currency-converter5.p.rapidapi.com/currency/convert?format=xml&from="+ curr1.getCode() +"&to="+ curr2.getCode() +"&amount="+ curr1.getAmount() +"&language=es";
         String apiHost = "currency-converter5.p.rapidapi.com";
         String apiKey = System.getenv("API_KEY");
@@ -52,7 +52,7 @@ public class CurrencyConverter {
             curr2.setRate(Double.parseDouble(!rate.equals("") ? rate : "0"));
 
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new Exception("invalid Api Key");
         }
     }
 

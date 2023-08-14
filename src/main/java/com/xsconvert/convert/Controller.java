@@ -120,7 +120,6 @@ public class Controller implements Initializable {
             toggleConvertButton(false);
             changeRateText(curr2.getRate());
             toAmount.setText(String.valueOf(curr2.getAmount()));
-
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
